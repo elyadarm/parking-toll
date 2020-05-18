@@ -12,7 +12,7 @@ How to use
 Start by defining your Vehicle class you can add any details you want, for our example we will take the following:
 
 ```java
-	//Specify different type of vehicles you want to manage
+    //Specify different type of vehicles you want to manage
     public enum VehicleType {GAS, ELECTRICAL, OTHER}
 
     //Specify your main Vehicle class
@@ -63,17 +63,17 @@ Build your Parking
 Define a pricing policy
 
 ```java
-		//Hourly pricing policy
-		PricingPolicy<Vehicle> hourly = PricingPolicy.HOURLY(new BigDecimal(3));
-		//Custom pricing policy
-		PricingPolicy<Vehicle> pricingPerVehicleType = slot ->{
-			if(slot.getVehicle().getVehicleType() == VehicleType.ELECTRICAL) {
-				//Free for this type of vehicles
-				return new BigDecimal(0);
-			}
-			//Hourly for this type
-			return hourly.computePrice(slot);
-		};
+	//Hourly pricing policy
+	PricingPolicy<Vehicle> hourly = PricingPolicy.HOURLY(new BigDecimal(3));
+	//Custom pricing policy
+	PricingPolicy<Vehicle> pricingPerVehicleType = slot ->{
+		if(slot.getVehicle().getVehicleType() == VehicleType.ELECTRICAL) {
+			//Free for this type of vehicles
+			return new BigDecimal(0);
+		}
+		//Hourly for this type
+		return hourly.computePrice(slot);
+	};
 ```
 
 
