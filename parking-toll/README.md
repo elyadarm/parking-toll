@@ -5,7 +5,9 @@ A Java Parking API ready to use
 install from source
 
 mvn clean install
+
 Jar: parking-toll/target/parking-toll-0.0.1-SNAPSHOT
+
 Java doc: parking-toll/target/apidocs/index.html
 
 ## How to use 
@@ -47,17 +49,13 @@ Start by defining your Vehicle class you can add any details you want, for our e
         
        //Register the vehicle in he parking
        Registration<Vehicle> registration = parking.register(gasVehicle, arrivalDateTime);
-        
-       assertTrue(registration.isSuccessful());
-        
+                
        //Check out from the parking
        Bill<Vehicle> bill = parking.checkOut(gasVehicle, departureDateTime);
         
        //Get the price
        bill.getPrice();
-        
-       assertEquals(new BigDecimal(10), bill.getPrice());       
-        
+                
 ```
 
 ## Define a pricing policy
