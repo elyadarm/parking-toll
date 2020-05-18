@@ -1,14 +1,14 @@
-#Parking API
+# Parking API
 A Java Parking API ready to use  
 
-Install
+## Install
 install from source
 
 mvn clean install
 Jar: parking-toll/target/parking-toll-0.0.1-SNAPSHOT
 Java doc: parking-toll/target/apidocs/index.html
 
-How to use 
+## How to use 
 Start by defining your Vehicle class you can add any details you want, for our example we will take the following:
 
 ```java
@@ -27,7 +27,7 @@ Start by defining your Vehicle class you can add any details you want, for our e
     }
 ```
 
-Build your Parking
+## Build your Parking
 
 ```java
     //Build your parking
@@ -60,7 +60,7 @@ Build your Parking
         
 ```
 
-Define a pricing policy
+## Define a pricing policy
 
 ```java
 	//Hourly pricing policy
@@ -75,5 +75,15 @@ Define a pricing policy
 		return hourly.computePrice(slot);
 	};
 ```
+
+Please see the java doc for more examples and details.
+
+## Limitation and future improvements
+
+- This library does not have any currency management system.
+- Finding a vehicle in the parking can be improved in the future by using a sytem that manages car registration number in order to identify a vehicle.
+- Locating a vehicle in the parking can be very usefull, adding a system to manage floors and slots location in the parking can be a great improvement.
+
+
 
 
