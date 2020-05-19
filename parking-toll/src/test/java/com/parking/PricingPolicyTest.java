@@ -8,6 +8,11 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import static org.junit.Assert.assertEquals;
 
+/**
+ * 
+ * @author Maad
+ *
+ */
 public class PricingPolicyTest extends TollPakingTestTool {
 
 
@@ -79,6 +84,5 @@ public class PricingPolicyTest extends TollPakingTestTool {
 		LocalDateTime departure = arrival.plus(Duration.ofMinutes(duration));
 		Slot<TestVehicle> slot = new Slot<TestVehicle>(0L, t -> true, getE20Vehicle(), arrival, departure);
 		assertEquals(expectedPrice.stripTrailingZeros(),pricingPolicy.computePrice(slot).stripTrailingZeros());
-//		assertTrue(expectedPrice.comparesEqualTo(pricingPolicy.computePrice(slot)) == 0);
 	}
 }

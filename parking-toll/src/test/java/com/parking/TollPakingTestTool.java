@@ -68,14 +68,6 @@ public class TollPakingTestTool {
     static void assertPriceEquals(BigDecimal exceptedPrice, BigDecimal testedPrice) {
     	assertEquals(exceptedPrice.stripTrailingZeros(), testedPrice.stripTrailingZeros());
     }
-//    static LocalDateTime localDateTime(int hour, int minute) {
-//        return LocalDateTime.of(2020, 5, 17, hour, minute, 0);
-//    }
-
-//    static final LocalDateTime dateTime6h5min = localDateTime(6, 5);
-    static final Duration duration50min = Duration.ofMinutes(50);
-//    static final LocalDateTime dateTime6h55min = dateTime6h5min.plus(duration50min);
-
 
     static BigDecimal money(int number) {
         return new BigDecimal(number);

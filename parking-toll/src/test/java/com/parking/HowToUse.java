@@ -10,6 +10,11 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * 
+ * @author Maad
+ *
+ */
 public class HowToUse {
 
 	//Specify different type of vehicles you want to manage

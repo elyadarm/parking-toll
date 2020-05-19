@@ -10,6 +10,11 @@ import java.util.function.Predicate;
 
 import static org.junit.Assert.*;
 
+/**
+ * 
+ * @author Maad
+ *
+ */
 public class SlotTest extends TollPakingTestTool {
 
     

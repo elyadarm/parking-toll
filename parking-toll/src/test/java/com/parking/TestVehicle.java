@@ -1,5 +1,10 @@
 package com.parking;
 
+/**
+ * 
+ * @author Maad
+ *
+ */
 public class TestVehicle {
 
     private final int id;

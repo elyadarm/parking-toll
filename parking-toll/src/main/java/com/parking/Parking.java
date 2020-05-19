@@ -11,10 +11,10 @@ import com.parking.exception.ParkingException;
 import com.parking.exception.PrincingPolicyException;
 
 /**
- * Parking class compatible with Generic Vehicle class, 
+ * Parking class compatible with any Vehicle class you are using 
  * Use {@link Parking#register(Object)} for vehicle registration in the parking
  * Use {@link Parking#checkOut(Object)} to leave the parking and calculate the price
- * Use {@link Parking#builder()} to create the parking the slots using your slot allocation strategy and your pricing policy.
+ * Use {@link Parking#builder()} to create the parking slots using your slot allocation strategy and your pricing policy.
  * @param <T> the vehicle class you want to use
  * @author Maad
  */
@@ -41,7 +41,7 @@ public class Parking<T> {
 
     /**
      * Return new {@link Builder} ready for use to create your parking
-     * @param <T> you vehicle class
+     * @param <T> your vehicle class
      * @return the builder
      */
     public static <T> Builder<T> builder() {
@@ -76,8 +76,8 @@ public class Parking<T> {
     
     /**
      * Return a stream containing all available slots for this vehicle using allocation policy strategy
-     * @param vehicle
-     * @return stream on available slots or the vehicle
+     * @param vehicle vehicle class
+     * @return stream on available slots for the vehicle
      */
     private Stream<Slot<T>> getAvailable(T vehicle) {
         return getAvailable().filter(slot -> slot.test(vehicle));
@@ -102,7 +102,7 @@ public class Parking<T> {
 
     /**
      * Setter of the pricing policy
-     * @param pricingPolicy
+     * @param pricingPolicy pricing policy
      */
     void setPricingPolicy(PricingPolicy<T> pricingPolicy) {
         this.pricingPolicy = pricingPolicy;
@@ -120,6 +120,7 @@ public class Parking<T> {
 
     /**
      * Register a vehicle in the parking if there is any available slot that matches the allocation strategy
+     * Synchronized method in order to make the registration thread safe
      * @param vehicle vehicle class
      * @param arrivalDateTime the arrival date and time.
      * @return {@link Registration} that contains the allocated slot if a free match is found
@@ -133,6 +134,7 @@ public class Parking<T> {
 
     /**
      * Register the vehicle
+     * Synchronized method in order to make the registration thread safe
      * @param vehicle vehicle class
      * @return {@link Registration} containing the allocated slot if a free match is found
      */
@@ -142,10 +144,10 @@ public class Parking<T> {
 
     /**
      * Allow you to check out a vehicle.
-     *
+     * Synchronized to make the checkOut thread safe
      * @param vehicle vehicle class
      * @param departureDateTime The departure date and time.
-     * @return {@link Registration} containing slot snapshot and price.
+     * @return {@link Bill} containing slot snapshot and price.
      */
     public synchronized Bill<T> checkOut(T vehicle, LocalDateTime departureDateTime) {
         Slot<T> slot = slots.stream().filter(s -> s.getVehicle() == vehicle).findFirst().orElseThrow(
@@ -154,17 +156,17 @@ public class Parking<T> {
     }
 
     /**
-     * Check out the vehicle with {@link LocalDateTime#now()}
-     *
-     * @param vehicle The vehicle you want to check in.
-     * @return {@link Registration} containing the allocated slot if a free match is found
+     * Check out the vehicle
+     * Synchronized to make the checkOut thread safe
+     * @param vehicle The vehicle you want check out.
+     * @return {@link Bill} containing slot snapshot and price.
      */
     public synchronized Bill<T> checkOut(T vehicle) {
         return checkOut(vehicle, LocalDateTime.now());
     }
 
     /**
-     * Used by the builder to validate the parking creation
+     * Used by the builder to validate the parking set up
      */
     boolean validate() {
        
