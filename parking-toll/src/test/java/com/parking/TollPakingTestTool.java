@@ -3,7 +3,6 @@ package com.parking;
 import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -69,6 +68,11 @@ public class TollPakingTestTool {
     	assertEquals(exceptedPrice.stripTrailingZeros(), testedPrice.stripTrailingZeros());
     }
 
+    final static BigDecimal THREE = money(3);
+    final static BigDecimal ONE = money(1);
+    final static PricingPolicy<TestVehicle> THREE_HOURLY_AND_FIXED = PricingPolicy.HOURLY_AND_FIXED(THREE, ONE);
+
+    
     static BigDecimal money(int number) {
         return new BigDecimal(number);
     }
@@ -76,11 +80,6 @@ public class TollPakingTestTool {
     static BigDecimal money(double number) {
         return new BigDecimal(number);
     }
-
-    final static BigDecimal THREE = money(3);
-    final static BigDecimal ONE = money(1);
-    final static PricingPolicy<TestVehicle> THREE_HOURLY_AND_FIXED = PricingPolicy.HOURLY_AND_FIXED(THREE, ONE);
-
 
     
 }
