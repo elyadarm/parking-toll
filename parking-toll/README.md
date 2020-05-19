@@ -79,6 +79,7 @@ Please see the java doc for more examples and details.
 ## Limitation and future improvements
 
 - This library does not have any currency management system.
+- For now slot id management is very limited, in the future we can provide better generators and improve id unicity management.
 - Finding a vehicle in the parking can be improved in the future by using a sytem that manages car registration number in order to identify a vehicle.
 - Locating a vehicle in the parking can be very usefull, adding a system to manage floors and slots location in the parking can be a great improvement.
 
