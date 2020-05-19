@@ -74,7 +74,7 @@ Start by defining your Vehicle class you can add any details you want, for our e
 	};
 ```
 
-Please see the java doc for more examples and details.
+Please see the java doc for more examples and details: you can generate it from the source with maven and find it here : parking-toll/target/apidocs/index.html
 
 ## Limitation and future improvements
 
